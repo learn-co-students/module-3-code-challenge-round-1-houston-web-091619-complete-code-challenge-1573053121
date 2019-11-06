@@ -23,37 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   .then(res => res.json())
   .then(image => renderImg(image))
 
-  cmtForm.addEventListener('submit', () => {
-    event.preventDefault()
-    let cmtContent = event.target[0].value
-    fetch(commentsURL, {
-      method: 'POST',
-      headers: {
-        "Accept": "application/json",
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify({
-        "image_id": imageId, 
-        "content": cmtContent
-      })
-    })
-    .then(res => res.json())
-    .then(newCmt => {
-      console.log(newCmt)
-      const li = document.createElement('li')
-      li.innerText = newCmt.content
-      cmtList.append(li)
-
-    })
-    event.target.reset()
-  })
-
-
-
-  cmtList.innerHTML = image.comments.content
-  //create li
-  imgCard.append(url)
-
 
   function renderImg(image) {
     const url = document.createElement('img')
@@ -82,6 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
 
+    cmtForm.addEventListener('submit', () => {
+      event.preventDefault()
+      let cmtContent = event.target[0].value
+      fetch(commentsURL, {
+        method: 'POST',
+        headers: {
+          "Accept": "application/json",
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          "image_id": imageId, 
+          "content": cmtContent
+        })
+      })
+      .then(res => res.json())
+      .then(newCmt => {
+        console.log(newCmt)
+        const li = document.createElement('li')
+        li.innerText = newCmt.content
+        cmtList.append(li)
+
+      })
+      event.target.reset()
+    })
+
+
+ 
+    cmtList.innerHTML = image.comments.content
+    //create li
+    imgCard.append(url)
   
 
 
