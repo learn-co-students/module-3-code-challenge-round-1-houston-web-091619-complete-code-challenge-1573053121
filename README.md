@@ -54,7 +54,7 @@ We have provided a series of prioritized steps to help you break down your appro
 ## Step 1 - Get the Image Data
 
 When the page loads, you will need to make a request to the API to get the data about your picture. The API follows RESTful conventions, but *make sure you read the API documentation* to familiarize yourself with the models, their associations, and the available endpoints of the API.
-
+kn
 #### API Docs
 
 #### Endpoint to show an individual Image
